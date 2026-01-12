@@ -1,13 +1,28 @@
 const prompt = require("prompt-sync")();
+let randomNumber = Math.floor(Math.random() * 6);
+let userQuestion = prompt("What is your question? ");
+let answer = "";
 
-let age = Number(prompt("What is your age?"));
+switch(randomNumber) {
+    case 0:
+        answer = "Yes, definitely!";
+        break;
+    case 1:
+        answer = "It is certain.";
+        break;
+    case 2:
+        answer = "Reply hazy, try again.";
+        break;
+    case 3:
+        answer = "Ask again later.";
+        break;
+    case 4:
+        answer = "Don't count on it.";
+        break;
+    case 5:
+        answer = "My sources say no.";
+        break;
+}
 
-if (age >= 21) {
-    console.log("Hello traveler, access to alcohol section granted");
-}
-else if (age >= 19) {
-    console.log("Hello traveler, access to alcohol denied");
-}
-else {
-    console.log("Please leave");
-}
+console.log("\nYou asked: " + userQuestion);
+console.log("Magic 8-Ball says: " + answer);
