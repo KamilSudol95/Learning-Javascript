@@ -1,28 +1,36 @@
 const prompt = require("prompt-sync")();
-let randomNumber = Math.floor(Math.random() * 6);
-let userQuestion = prompt("What is your question? ");
-let answer = "";
+let prize = Number(prompt("Select a number between 0 and 10: "));
+let message = "My Selection: ";
+let prizeMessage;
 
-switch(randomNumber) {
+switch(prize) {
     case 0:
-        answer = "Yes, definitely!";
-        break;
     case 1:
-        answer = "It is certain.";
+        prizeMessage = "You won a chocolate bar!";
         break;
     case 2:
-        answer = "Reply hazy, try again.";
-        break;
     case 3:
-        answer = "Ask again later.";
+        prizeMessage = "You won a small toy!";
         break;
     case 4:
-        answer = "Don't count on it.";
+        prizeMessage = "You won a gift card!";
         break;
     case 5:
-        answer = "My sources say no.";
+    case 6:
+        prizeMessage = "You won a cool sticker pack!";
         break;
+    case 7:
+        prizeMessage = "You won a mystery box!";
+        break;
+    case 8:
+    case 9:
+        prizeMessage = "You won a coupon for free ice cream!";
+        break;
+    case 10:
+        prizeMessage = "Jackpot! You won a gaming console!";
+        break;
+    default:
+        prizeMessage = "Invalid selection! Please choose a number between 0 and 10.";
 }
 
-console.log("\nYou asked: " + userQuestion);
-console.log("Magic 8-Ball says: " + answer);
+console.log(message + prize + "\n" + prizeMessage);
