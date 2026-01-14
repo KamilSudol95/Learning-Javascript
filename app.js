@@ -1,36 +1,63 @@
-const prompt = require("prompt-sync")();
-let prize = Number(prompt("Select a number between 0 and 10: "));
-let message = "My Selection: ";
-let prizeMessage;
+let car = {
+    model: "Golf",
+    make: "Volkswagen",
+    year: 1999,
+    color: "black",
+};
 
-switch(prize) {
-    case 0:
-    case 1:
-        prizeMessage = "You won a chocolate bar!";
-        break;
-    case 2:
-    case 3:
-        prizeMessage = "You won a small toy!";
-        break;
-    case 4:
-        prizeMessage = "You won a gift card!";
-        break;
-    case 5:
-    case 6:
-        prizeMessage = "You won a cool sticker pack!";
-        break;
-    case 7:
-        prizeMessage = "You won a mystery box!";
-        break;
-    case 8:
-    case 9:
-        prizeMessage = "You won a coupon for free ice cream!";
-        break;
-    case 10:
-        prizeMessage = "Jackpot! You won a gaming console!";
-        break;
-    default:
-        prizeMessage = "Invalid selection! Please choose a number between 0 and 10.";
+let cars = [
+    {
+        model: "Golf",
+        make: "Volkswagen",
+        year: 1999,
+        color: "black",
+    },
+    {
+        model: "Picanto",
+        make: "Kia",
+        year: 2020,
+        color: "red",
+    },
+    {
+        model: "Peugeot",
+        make: "208",
+        year: 2021,
+        color: "black",
+    },
+    {
+        model: "Fiat",
+        make: "Punto",
+        year: 2020,
+        color: "black",
+    }
+];
+
+let arrKeys = Object.keys(car);
+for(let i = 0; i < arrKeys.length; i++) {
+    console.log(arrKeys[i] + ": " + car[arrKeys[i]]);
 }
 
-console.log(message + prize + "\n" + prizeMessage);
+let arrEntries = Object.entries(car);
+console.log(arrEntries);
+
+for (const [key, value] of Object.entries(car)) {
+    console.log(key, ":", value);
+}
+
+for (let i = 0; i < cars.length; i++) {
+    if (cars[i].year >= 2020) {
+        if (cars[i].color === "black") {
+            console.log("I have found my new car:", cars[i]);
+            break;
+        }
+    }
+}
+
+for (let car of cars){
+    if(car.color !== "black"){
+        continue;
+    }
+    if (car.year >= 2020) {
+        console.log("we could get this one:", car);
+    }
+}
