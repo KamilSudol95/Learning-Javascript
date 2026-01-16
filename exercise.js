@@ -1,19 +1,22 @@
-let value1= "1000";
+let start = 10;
 
-(function(){
-    let value1 = "0";
-    console.log(value1);
-})()
+function loop1(val) {
+    console.log(val);
+    if (val < 1) {
+        return;
+    }
+    return loop1(val - 1);
+}
 
+loop1(start);
 
-let result = (function(){
-    let value1 = "1";
-    return value1;
-})
+function loop2(val) {
+    console.log(val);
+    if (val > 0) {
+        val--;
+        return loop2(val);
+    }
 
-console.log(value1);
+}
 
-(function(param1) {
-    let value1 = param1;
-    console.log(`${value1}`);
-})("2");
+loop2(start);
