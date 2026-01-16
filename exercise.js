@@ -1,18 +1,19 @@
-let groups = [
-    ["Martin", "Daniel", "Keith"],
-    ["Margot", "Marina", "Ali"],
-    ["Helen", "Jonah", "Sambikos"],
-];
+let value1= "1000";
+
+(function(){
+    let value1 = "0";
+    console.log(value1);
+})()
 
 
-outer:
-    for (let group of groups) {
-        inner:
-            for (let member of group) {
-                if (member.startsWith("M")) {
-                    console.log("found one starting with M:", member);
-                    break outer;
-                }
-            }
-    }
+let result = (function(){
+    let value1 = "1";
+    return value1;
+})
 
+console.log(value1);
+
+(function(param1) {
+    let value1 = param1;
+    console.log(`${value1}`);
+})("2");
