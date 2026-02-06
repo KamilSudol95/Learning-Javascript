@@ -142,3 +142,24 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+
+
+// const test = fetch('https://jsonplaceholder.typicode.com/todos/')
+//     .then((response) => response.json())
+//     .then((data) => console.log(data));
+//
+// console.log("yolo");
+
+async function getTodos() {
+    const response = await fetch('https://jsonplaceholder.typicode.com/todos/');
+    const data = await response.json();
+
+    console.log(data);
+
+}
+
+getTodos();
+
+
+
+console.log("TEST");
