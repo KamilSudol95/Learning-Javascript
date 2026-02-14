@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import {pizzaData} from './data.js';
+import './index.css';
 
 
 function App() {
     return (
-        <div>
+        <div className="container">
             <Header />
             <Menu />
             <Footer />
@@ -28,7 +29,11 @@ function Pizza(props) {
 }
 
 function Header() {
-    return <h1>Fast React Pizza Co.</h1>
+    return (
+        <header className="header">
+            <h1>Fast React Pizza Co.</h1>
+        </header>
+    )
 }
 
 function Menu() {
