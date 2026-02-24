@@ -10,10 +10,9 @@ function App() {
     const [step, setStep] = React.useState(1);
     const [count, setCount] = React.useState(0);
 
-    function handleStepPlus() { setStep((s) => s + 1); }
-    function handleStepMinus() { if (step > 1) setStep((s) => s - 1); }
     function handleCountPlus() { setCount((c) => c + step); }
     function handleCountMinus() { setCount((c) => c - step); }
+    function handleReset() {setCount(0);}
 
     return (
         <div className="App">
@@ -21,9 +20,10 @@ function App() {
 
             <Counter
                 step={step}
+                setStep={setStep}
                 count={count}
-                onStepPlus={handleStepPlus}
-                onStepMinus={handleStepMinus}
+                setCount={setCount}
+                handleReset={handleReset}
                 onCountPlus={handleCountPlus}
                 onCountMinus={handleCountMinus}
             />
@@ -34,18 +34,21 @@ function App() {
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
-function Counter({ step, count, onStepPlus, onStepMinus, onCountPlus, onCountMinus }) {
+function Counter({ step, setStep, count, setCount, onCountPlus, onCountMinus }) {
     return (
-        <div style={{ marginBottom: "20px" }}>
+        <div>
             <div>
-                <button onClick={onStepMinus}>-</button>
+                <input type='range' min='1' max='10' onChange={(e) => setStep(Number(e.target.value))} />
                 <span> Step: {step} </span>
-                <button onClick={onStepPlus}>+</button>
             </div>
 
-            <div style={{ marginTop: "10px" }}>
+            <div>
                 <button onClick={onCountMinus}>-</button>
-                <span> Counter: {count} </span>
+                <input
+                    type='text'
+                    value={count}
+                    onChange={(e) => setCount(Number(e.target.value))}
+                />
                 <button onClick={onCountPlus}>+</button>
             </div>
         </div>
@@ -54,7 +57,7 @@ function Counter({ step, count, onStepPlus, onStepMinus, onCountPlus, onCountMin
 
 
 // eslint-disable-next-line react-refresh/only-export-components
-function Calendar({ count }) {
+function Calendar({ count, handleReset }) {
 
     const date = new Date();
     date.setDate(date.getDate() + count);
@@ -62,15 +65,21 @@ function Calendar({ count }) {
     return (
         <div>
             <p>
-        <span>
-          {count === 0
-              ? "Today is "
-              : count > 0
-                  ? `${count} days from today is `
-                  : `${Math.abs(count)} days ago was `}
-        </span>
+            <span>
+                {count === 0
+                    ? "Today is "
+                    : count > 0
+                        ? `${count} days from today is `
+                        : `${Math.abs(count)} days ago was `}
+            </span>
                 <strong>{date.toDateString()}</strong>
             </p>
+
+            {count !== 0 ? (
+                <div>
+                    <button onClick={handleReset}>Reset</button>
+                </div>
+            ) : null}
         </div>
     );
 }
